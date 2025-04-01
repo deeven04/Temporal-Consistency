@@ -7,13 +7,16 @@
 Commands to run the code
 1. Create and Activate a Conda Environment
    ```bash
-   conda create -n tokenflow-py39 python=3.9 -y
-   conda activate tokenflow-py39
+   conda create -n tokenflow python=3.9 -y
+   conda activate tokenflow
 2. Install dependencies
    ```bash
-   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  # For CUDA 12.1+
-   pip install diffusers transformers accelerate numpy pillow tqdm opencv-python pyyaml kornia av
+   pip install -r requirments.txt
+   pip install torchvision
 3. Execution
    ```bash
-   python preprocess.py --data_path myvideo.mp4 --save_dir latents
-   python run_tokenflow_pnp.py --config_path configs/config_pnp.yaml
+   python preprocess.py --data_path data/{video_name}.mp4 --save_dir latents --inversion_prompt "" --n_frames {x:where 'x' is the number of frames of input video}
+Change config_pnp.yaml according to requirments{n_frames, data_path}
+   ```bash
+   python run_tokenflow_pnp.py
+
